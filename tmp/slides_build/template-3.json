@@ -1,0 +1,587 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/ofy9wn61",
+    "id": "ofy9wn61",
+    "slide": 3,
+    "layoutId": "/ppt/slideLayouts/slideLayout2.xml",
+    "layoutName": "Title and Content",
+    "layoutType": "obj",
+    "masterLayoutId": "/ppt/slideMasters/slideMaster1.xml",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": {
+    "colorSchemeName": "Office",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "fontScheme": {
+      "name": "Office",
+      "majorFont": {
+        "latinTypeface": "Aptos Display"
+      },
+      "minorFont": {
+        "latinTypeface": "Aptos"
+      }
+    },
+    "typefaces": [
+      "Aptos",
+      "Aptos Display"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "/ppt/slideLayouts/slideLayout2.xml",
+      "name": "Title and Content",
+      "type": "obj",
+      "parentLayoutId": "/ppt/slideMasters/slideMaster1.xml",
+      "elements": [
+        {
+          "order": 1,
+          "kind": "shape",
+          "scope": "layout",
+          "aid": "template/layout//ppt/slideLayouts/slideLayout2.xml/2",
+          "id": "2",
+          "name": "Title 1",
+          "bbox": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "text": "Click to edit Master title style",
+          "textPreview": "Click to edit Master title style",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "Click to edit Master title style",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Click to edit Master title style"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "kind": "shape",
+          "scope": "layout",
+          "aid": "template/layout//ppt/slideLayouts/slideLayout2.xml/3",
+          "id": "3",
+          "name": "Content Placeholder 2",
+          "bbox": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "text": "Click to edit Master text styles\nSecond level\nThird level\nFourth level\nFifth level",
+          "textPreview": "Click to edit Master text styles | Second level | Third level | Fourth level | Fifth level",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "Click to edit Master text styles",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Click to edit Master text styles"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "text": "Second level",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Second level"
+                }
+              ]
+            },
+            {
+              "index": 3,
+              "text": "Third level",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Third level"
+                }
+              ]
+            },
+            {
+              "index": 4,
+              "text": "Fourth level",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Fourth level"
+                }
+              ]
+            },
+            {
+              "index": 5,
+              "text": "Fifth level",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Fifth level"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "kind": "shape",
+          "scope": "layout",
+          "aid": "template/layout//ppt/slideLayouts/slideLayout2.xml/4",
+          "id": "4",
+          "name": "Date Placeholder 3",
+          "bbox": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "text": "7/20/26",
+          "textPreview": "7/20/26",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "7/20/26",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "7/20/26"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "kind": "shape",
+          "scope": "layout",
+          "aid": "template/layout//ppt/slideLayouts/slideLayout2.xml/5",
+          "id": "5",
+          "name": "Footer Placeholder 4",
+          "bbox": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "order": 5,
+          "kind": "shape",
+          "scope": "layout",
+          "aid": "template/layout//ppt/slideLayouts/slideLayout2.xml/6",
+          "id": "6",
+          "name": "Slide Number Placeholder 5",
+          "bbox": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "text": "‹#›",
+          "textPreview": "‹#›",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "‹#›",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "‹#›"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scope": "master",
+      "id": "/ppt/slideMasters/slideMaster1.xml",
+      "type": "master",
+      "elements": [
+        {
+          "order": 1,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/2",
+          "id": "2",
+          "name": "Title Placeholder 1",
+          "bbox": [
+            88,
+            38.33,
+            1104,
+            139.17
+          ],
+          "geometry": "rect",
+          "text": "Click to edit Master title style",
+          "textPreview": "Click to edit Master title style",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "vertical": 1,
+            "verticalAlignment": "middle",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "Click to edit Master title style",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Click to edit Master title style"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/3",
+          "id": "3",
+          "name": "Text Placeholder 2",
+          "bbox": [
+            88,
+            191.67,
+            1104,
+            456.83
+          ],
+          "geometry": "rect",
+          "text": "Click to edit Master text styles\nSecond level\nThird level\nFourth level\nFifth level",
+          "textPreview": "Click to edit Master text styles | Second level | Third level | Fourth level | Fifth level",
+          "resolvedTextStyle": {
+            "vertical": 1,
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "Click to edit Master text styles",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Click to edit Master text styles"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "text": "Second level",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Second level"
+                }
+              ]
+            },
+            {
+              "index": 3,
+              "text": "Third level",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Third level"
+                }
+              ]
+            },
+            {
+              "index": 4,
+              "text": "Fourth level",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Fourth level"
+                }
+              ]
+            },
+            {
+              "index": 5,
+              "text": "Fifth level",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Fifth level"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/4",
+          "id": "4",
+          "name": "Date Placeholder 3",
+          "bbox": [
+            88,
+            667.33,
+            288,
+            38.33
+          ],
+          "geometry": "rect",
+          "text": "7/20/26",
+          "textPreview": "7/20/26",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "vertical": 1,
+            "verticalAlignment": "middle",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "7/20/26",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "7/20/26"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/5",
+          "id": "5",
+          "name": "Footer Placeholder 4",
+          "bbox": [
+            424,
+            667.33,
+            432,
+            38.33
+          ],
+          "geometry": "rect",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "vertical": 1,
+            "verticalAlignment": "middle",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          }
+        },
+        {
+          "order": 5,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/6",
+          "id": "6",
+          "name": "Slide Number Placeholder 5",
+          "bbox": [
+            904,
+            667.33,
+            288,
+            38.33
+          ],
+          "geometry": "rect",
+          "text": "‹#›",
+          "textPreview": "‹#›",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "vertical": 1,
+            "verticalAlignment": "middle",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "‹#›",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "‹#›"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/cza94vmx",
+      "id": "2",
+      "name": "Title 1",
+      "bbox": [
+        88,
+        38.33,
+        1104,
+        139.17
+      ],
+      "text": "Known Prior Art ",
+      "textPreview": "Known Prior Art",
+      "resolvedFontSize": 58.67,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "vertical": 1,
+        "fontSize": 58.67,
+        "typeface": "Aptos Display",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "autoFit": "shrinkText",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Known Prior Art"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Known Prior Art ",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Known Prior Art "
+            }
+          ],
+          "bulletCharacter": "",
+          "lineSpacingPercent": 90000
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/d0jax03i",
+      "id": "3",
+      "name": "Content Placeholder 2",
+      "bbox": [
+        88,
+        191.67,
+        1104,
+        456.83
+      ],
+      "text": "Some patents propose to optimize antenna direction toward  devices but they do not propose the AP learning every client's preferred orientation over time or do not take into account client traffic need to know what clients to prioritize. They optimize mathematically from channel estimates. Prior work do not propose calibration sweep.",
+      "textPreview": "Some patents propose to optimize antenna direction toward  devices but they do not propose the AP learning every client's preferred orien...",
+      "resolvedFontSize": 37.33,
+      "resolvedTextStyle": {
+        "vertical": 1,
+        "fontSize": 37.33,
+        "typeface": "Aptos",
+        "color": "tx1",
+        "alignment": "left",
+        "autoFit": "shrinkText",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 4,
+        "lines": [
+          {
+            "index": 1,
+            "text": "•Some patents propose to optimize antenna direction toward  devices but they do not propose the"
+          },
+          {
+            "index": 2,
+            "text": "AP learning every client's preferred orientation over time or do not take into account client traffic"
+          },
+          {
+            "index": 3,
+            "text": "need to know what clients to prioritize. They optimize mathematically from channel estimates."
+          },
+          {
+            "index": 4,
+            "text": "Prior work do not propose calibration sweep."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Some patents propose to optimize antenna direction toward  devices but they do not propose the AP learning every client's preferred orientation over time or do not take into account client traffic need to know what clients to prioritize. They optimize mathematically from channel estimates. Prior work do not propose calibration sweep.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Some patents propose to optimize antenna direction toward  devices but they do not propose the AP learning every client's preferred orientation over time or do not take into account client traffic need to know what clients to prioritize. They optimize mathematically from channel estimates. Prior work do not propose calibration sweep.",
+              "fontSize": 26.67
+            }
+          ],
+          "bulletCharacter": "•",
+          "marginLeft": 228600,
+          "indent": -228600,
+          "lineSpacingPercent": 90000
+        }
+      ]
+    }
+  ],
+  "composeRuns": []
+}

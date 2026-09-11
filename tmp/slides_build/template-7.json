@@ -1,0 +1,806 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/gnmp4jqx",
+    "id": "gnmp4jqx",
+    "slide": 7,
+    "layoutId": "/ppt/slideLayouts/slideLayout2.xml",
+    "layoutName": "Title and Content",
+    "layoutType": "obj",
+    "masterLayoutId": "/ppt/slideMasters/slideMaster1.xml",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": {
+    "colorSchemeName": "Office",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "fontScheme": {
+      "name": "Office",
+      "majorFont": {
+        "latinTypeface": "Aptos Display"
+      },
+      "minorFont": {
+        "latinTypeface": "Aptos"
+      }
+    },
+    "typefaces": [
+      "Aptos",
+      "Aptos Display"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "/ppt/slideLayouts/slideLayout2.xml",
+      "name": "Title and Content",
+      "type": "obj",
+      "parentLayoutId": "/ppt/slideMasters/slideMaster1.xml",
+      "elements": [
+        {
+          "order": 1,
+          "kind": "shape",
+          "scope": "layout",
+          "aid": "template/layout//ppt/slideLayouts/slideLayout2.xml/2",
+          "id": "2",
+          "name": "Title 1",
+          "bbox": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "text": "Click to edit Master title style",
+          "textPreview": "Click to edit Master title style",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "Click to edit Master title style",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Click to edit Master title style"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "kind": "shape",
+          "scope": "layout",
+          "aid": "template/layout//ppt/slideLayouts/slideLayout2.xml/3",
+          "id": "3",
+          "name": "Content Placeholder 2",
+          "bbox": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "text": "Click to edit Master text styles\nSecond level\nThird level\nFourth level\nFifth level",
+          "textPreview": "Click to edit Master text styles | Second level | Third level | Fourth level | Fifth level",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "Click to edit Master text styles",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Click to edit Master text styles"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "text": "Second level",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Second level"
+                }
+              ]
+            },
+            {
+              "index": 3,
+              "text": "Third level",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Third level"
+                }
+              ]
+            },
+            {
+              "index": 4,
+              "text": "Fourth level",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Fourth level"
+                }
+              ]
+            },
+            {
+              "index": 5,
+              "text": "Fifth level",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Fifth level"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "kind": "shape",
+          "scope": "layout",
+          "aid": "template/layout//ppt/slideLayouts/slideLayout2.xml/4",
+          "id": "4",
+          "name": "Date Placeholder 3",
+          "bbox": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "text": "7/20/26",
+          "textPreview": "7/20/26",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "7/20/26",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "7/20/26"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "kind": "shape",
+          "scope": "layout",
+          "aid": "template/layout//ppt/slideLayouts/slideLayout2.xml/5",
+          "id": "5",
+          "name": "Footer Placeholder 4",
+          "bbox": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "order": 5,
+          "kind": "shape",
+          "scope": "layout",
+          "aid": "template/layout//ppt/slideLayouts/slideLayout2.xml/6",
+          "id": "6",
+          "name": "Slide Number Placeholder 5",
+          "bbox": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "text": "‹#›",
+          "textPreview": "‹#›",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "‹#›",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "‹#›"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scope": "master",
+      "id": "/ppt/slideMasters/slideMaster1.xml",
+      "type": "master",
+      "elements": [
+        {
+          "order": 1,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/2",
+          "id": "2",
+          "name": "Title Placeholder 1",
+          "bbox": [
+            88,
+            38.33,
+            1104,
+            139.17
+          ],
+          "geometry": "rect",
+          "text": "Click to edit Master title style",
+          "textPreview": "Click to edit Master title style",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "vertical": 1,
+            "verticalAlignment": "middle",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "Click to edit Master title style",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Click to edit Master title style"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/3",
+          "id": "3",
+          "name": "Text Placeholder 2",
+          "bbox": [
+            88,
+            191.67,
+            1104,
+            456.83
+          ],
+          "geometry": "rect",
+          "text": "Click to edit Master text styles\nSecond level\nThird level\nFourth level\nFifth level",
+          "textPreview": "Click to edit Master text styles | Second level | Third level | Fourth level | Fifth level",
+          "resolvedTextStyle": {
+            "vertical": 1,
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "Click to edit Master text styles",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Click to edit Master text styles"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "text": "Second level",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Second level"
+                }
+              ]
+            },
+            {
+              "index": 3,
+              "text": "Third level",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Third level"
+                }
+              ]
+            },
+            {
+              "index": 4,
+              "text": "Fourth level",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Fourth level"
+                }
+              ]
+            },
+            {
+              "index": 5,
+              "text": "Fifth level",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Fifth level"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/4",
+          "id": "4",
+          "name": "Date Placeholder 3",
+          "bbox": [
+            88,
+            667.33,
+            288,
+            38.33
+          ],
+          "geometry": "rect",
+          "text": "7/20/26",
+          "textPreview": "7/20/26",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "vertical": 1,
+            "verticalAlignment": "middle",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "7/20/26",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "7/20/26"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/5",
+          "id": "5",
+          "name": "Footer Placeholder 4",
+          "bbox": [
+            424,
+            667.33,
+            432,
+            38.33
+          ],
+          "geometry": "rect",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "vertical": 1,
+            "verticalAlignment": "middle",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          }
+        },
+        {
+          "order": 5,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/6",
+          "id": "6",
+          "name": "Slide Number Placeholder 5",
+          "bbox": [
+            904,
+            667.33,
+            288,
+            38.33
+          ],
+          "geometry": "rect",
+          "text": "‹#›",
+          "textPreview": "‹#›",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "vertical": 1,
+            "verticalAlignment": "middle",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "‹#›",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "‹#›"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/cb2tkvap",
+      "id": "2",
+      "name": "Title 1",
+      "bbox": [
+        88,
+        38.33,
+        1104,
+        139.17
+      ],
+      "text": "1. Wireless channel characterization by rotating antennas",
+      "textPreview": "1. Wireless channel characterization by rotating antennas",
+      "resolvedFontSize": 58.67,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "vertical": 1,
+        "fontSize": 58.67,
+        "typeface": "Aptos Display",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "autoFit": "shrinkText",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "1. Wireless channel characterization by"
+          },
+          {
+            "index": 2,
+            "text": "rotating antennas"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "1. Wireless channel characterization by rotating antennas",
+          "runs": [
+            {
+              "index": 1,
+              "text": "1. Wireless channel characterization by rotating antennas"
+            }
+          ],
+          "bulletCharacter": "",
+          "lineSpacingPercent": 90000
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/dcbud0ra",
+      "id": "3",
+      "name": "Content Placeholder 2",
+      "bbox": [
+        88,
+        191.67,
+        1104,
+        456.83
+      ],
+      "text": "By rotating one or more AP antennas, AP could characterize (step 1) angle of arrival (AoA) and other propagation channel characteristics from each client device. Based on such AoA information, AP could optimize antenna(s) orientation to improve coverage and performance (step 4)\nDifferent methods could be designed under various conditions\nKnowledge of client device locations (fixed or mobile)\nKnowledge of indoor floorplan and location of furniture/obstacle in the environment\nAP antenna only rotate in one direction (one motor or one axial), two directions (two motors or two axials), three directions (three motors or three axials)\n@Shizen and @Hao, please draw a diagram with one AP, four antennas, and the three axials of one example antenna…\nSAGE/MUSIC and other algorithms can be leveraged or modified to characterize AoA by comparing relative phase and amplitude difference when AP antennas rotate (assuming in a static channel)\nPotential simulation could be built to demonstrate AoA characterization results and AP performance improvement (hold on for any action)",
+      "textPreview": "By rotating one or more AP antennas, AP could characterize (step 1) angle of arrival (AoA) and other propagation channel characteristics ...",
+      "resolvedFontSize": 28.93,
+      "resolvedTextStyle": {
+        "vertical": 1,
+        "fontSize": 37.33,
+        "typeface": "Aptos",
+        "color": "tx1",
+        "alignment": "left",
+        "autoFit": "shrinkText",
+        "autoFitScale": 0.78,
+        "autoFitLineSpaceReduction": 20000,
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 23,
+        "lines": [
+          {
+            "index": 1,
+            "text": "•By rotating one or more AP antennas, AP could characterize (step 1) angle of arrival (AoA)"
+          },
+          {
+            "index": 2,
+            "text": "and other propagation channel characteristics from each client device. Based on such AoA"
+          },
+          {
+            "index": 3,
+            "text": "information, AP could optimize antenna(s) orientation to improve coverage and"
+          },
+          {
+            "index": 4,
+            "text": "performance (step 4)"
+          },
+          {
+            "index": 5,
+            "text": ""
+          },
+          {
+            "index": 6,
+            "text": "•Different methods could be designed under various conditions"
+          },
+          {
+            "index": 7,
+            "text": ""
+          },
+          {
+            "index": 8,
+            "text": "•Knowledge of client device locations (fixed or mobile)"
+          },
+          {
+            "index": 9,
+            "text": ""
+          },
+          {
+            "index": 10,
+            "text": "•Knowledge of indoor floorplan and location of furniture/obstacle in the environment"
+          },
+          {
+            "index": 11,
+            "text": ""
+          },
+          {
+            "index": 12,
+            "text": "•AP antenna only rotate in one direction (one motor or one axial), two directions (two motors or two"
+          },
+          {
+            "index": 13,
+            "text": "axials), three directions (three motors or three axials)"
+          },
+          {
+            "index": 14,
+            "text": ""
+          },
+          {
+            "index": 15,
+            "text": "•@Shizen and @Hao, please draw a diagram with one AP, four antennas, and the three axials of one example"
+          },
+          {
+            "index": 16,
+            "text": "antenna…"
+          },
+          {
+            "index": 17,
+            "text": ""
+          },
+          {
+            "index": 18,
+            "text": "•SAGE/MUSIC and other algorithms can be leveraged or modified to characterize AoA by"
+          },
+          {
+            "index": 19,
+            "text": "comparing relative phase and amplitude difference when AP antennas rotate (assuming in"
+          },
+          {
+            "index": 20,
+            "text": "a static channel)"
+          },
+          {
+            "index": 21,
+            "text": ""
+          },
+          {
+            "index": 22,
+            "text": "•Potential simulation could be built to demonstrate AoA characterization results and AP"
+          },
+          {
+            "index": 23,
+            "text": "performance improvement (hold on for any action)"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "By rotating one or more AP antennas, AP could characterize (step 1) angle of arrival (AoA) and other propagation channel characteristics from each client device. Based on such AoA information, AP could optimize antenna(s) orientation to improve coverage and performance (step 4)",
+          "runs": [
+            {
+              "index": 1,
+              "text": "By rotating one or more AP antennas, AP could characterize (step 1) angle of arrival ("
+            },
+            {
+              "index": 2,
+              "text": "AoA"
+            },
+            {
+              "index": 3,
+              "text": ") and other propagation channel characteristics from each client device. Based on such "
+            },
+            {
+              "index": 4,
+              "text": "AoA"
+            },
+            {
+              "index": 5,
+              "text": " information, AP could optimize antenna(s) orientation to improve coverage and performance (step 4)"
+            }
+          ],
+          "bulletCharacter": "•",
+          "marginLeft": 228600,
+          "indent": -228600,
+          "lineSpacingPercent": 90000
+        },
+        {
+          "index": 2,
+          "text": "Different methods could be designed under various conditions",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Different methods could be designed under various conditions"
+            }
+          ],
+          "bulletCharacter": "•",
+          "marginLeft": 228600,
+          "indent": -228600,
+          "lineSpacingPercent": 90000
+        },
+        {
+          "index": 3,
+          "text": "Knowledge of client device locations (fixed or mobile)",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Knowledge of client device locations (fixed or mobile)"
+            }
+          ],
+          "bulletCharacter": "•",
+          "marginLeft": 685800,
+          "indent": -228600,
+          "lineSpacingPercent": 90000
+        },
+        {
+          "index": 4,
+          "text": "Knowledge of indoor floorplan and location of furniture/obstacle in the environment",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Knowledge of indoor floorplan and location of furniture/obstacle in the environment"
+            }
+          ],
+          "bulletCharacter": "•",
+          "marginLeft": 685800,
+          "indent": -228600,
+          "lineSpacingPercent": 90000
+        },
+        {
+          "index": 5,
+          "text": "AP antenna only rotate in one direction (one motor or one axial), two directions (two motors or two axials), three directions (three motors or three axials)",
+          "runs": [
+            {
+              "index": 1,
+              "text": "AP antenna only rotate in one direction (one motor or one axial), two directions (two motors or two axials), three directions (three motors or three axials)"
+            }
+          ],
+          "bulletCharacter": "•",
+          "marginLeft": 685800,
+          "indent": -228600,
+          "lineSpacingPercent": 90000
+        },
+        {
+          "index": 6,
+          "text": "@Shizen and @Hao, please draw a diagram with one AP, four antennas, and the three axials of one example antenna…",
+          "runs": [
+            {
+              "index": 1,
+              "text": "@"
+            },
+            {
+              "index": 2,
+              "text": "Shizen"
+            },
+            {
+              "index": 3,
+              "text": " and @Hao, please draw a diagram with one AP, four antennas, and the three axials of one example antenna…"
+            }
+          ],
+          "bulletCharacter": "•",
+          "marginLeft": 1143000,
+          "indent": -228600,
+          "lineSpacingPercent": 90000
+        },
+        {
+          "index": 7,
+          "text": "SAGE/MUSIC and other algorithms can be leveraged or modified to characterize AoA by comparing relative phase and amplitude difference when AP antennas rotate (assuming in a static channel)",
+          "runs": [
+            {
+              "index": 1,
+              "text": "SAGE/MUSIC and other algorithms can be leveraged or modified to characterize "
+            },
+            {
+              "index": 2,
+              "text": "AoA"
+            },
+            {
+              "index": 3,
+              "text": " by comparing relative phase and amplitude difference when AP antennas rotate (assuming in a static channel)"
+            }
+          ],
+          "bulletCharacter": "•",
+          "marginLeft": 228600,
+          "indent": -228600,
+          "lineSpacingPercent": 90000
+        },
+        {
+          "index": 8,
+          "text": "Potential simulation could be built to demonstrate AoA characterization results and AP performance improvement (hold on for any action)",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Potential simulation could be built to demonstrate "
+            },
+            {
+              "index": 2,
+              "text": "AoA"
+            },
+            {
+              "index": 3,
+              "text": " characterization results and AP performance improvement (hold on for any action)"
+            }
+          ],
+          "bulletCharacter": "•",
+          "marginLeft": 228600,
+          "indent": -228600,
+          "lineSpacingPercent": 90000
+        }
+      ]
+    }
+  ],
+  "composeRuns": []
+}

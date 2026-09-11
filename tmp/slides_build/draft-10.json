@@ -1,0 +1,752 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/lkprct",
+    "id": "lkprct",
+    "slide": 10,
+    "layoutId": "/ppt/slideLayouts/slideLayout2.xml",
+    "layoutName": "Title and Content",
+    "layoutType": "obj",
+    "masterLayoutId": "/ppt/slideMasters/slideMaster1.xml",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": {
+    "colorSchemeName": "Office",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "fontScheme": {
+      "name": "Office",
+      "majorFont": {
+        "latinTypeface": "Aptos Display"
+      },
+      "minorFont": {
+        "latinTypeface": "Aptos"
+      }
+    },
+    "typefaces": [
+      "Aptos",
+      "Aptos Display"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "/ppt/slideLayouts/slideLayout2.xml",
+      "name": "Title and Content",
+      "type": "obj",
+      "parentLayoutId": "/ppt/slideMasters/slideMaster1.xml",
+      "elements": [
+        {
+          "order": 1,
+          "kind": "shape",
+          "scope": "layout",
+          "aid": "template/layout//ppt/slideLayouts/slideLayout2.xml/2",
+          "id": "2",
+          "name": "Title 1",
+          "bbox": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "text": "Click to edit Master title style",
+          "textPreview": "Click to edit Master title style",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "Click to edit Master title style",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Click to edit Master title style"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "kind": "shape",
+          "scope": "layout",
+          "aid": "template/layout//ppt/slideLayouts/slideLayout2.xml/3",
+          "id": "3",
+          "name": "Content Placeholder 2",
+          "bbox": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "text": "Click to edit Master text styles\nSecond level\nThird level\nFourth level\nFifth level",
+          "textPreview": "Click to edit Master text styles | Second level | Third level | Fourth level | Fifth level",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "Click to edit Master text styles",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Click to edit Master text styles"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "text": "Second level",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Second level"
+                }
+              ]
+            },
+            {
+              "index": 3,
+              "text": "Third level",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Third level"
+                }
+              ]
+            },
+            {
+              "index": 4,
+              "text": "Fourth level",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Fourth level"
+                }
+              ]
+            },
+            {
+              "index": 5,
+              "text": "Fifth level",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Fifth level"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "kind": "shape",
+          "scope": "layout",
+          "aid": "template/layout//ppt/slideLayouts/slideLayout2.xml/4",
+          "id": "4",
+          "name": "Date Placeholder 3",
+          "bbox": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "text": "7/20/26",
+          "textPreview": "7/20/26",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "7/20/26",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "7/20/26"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "kind": "shape",
+          "scope": "layout",
+          "aid": "template/layout//ppt/slideLayouts/slideLayout2.xml/5",
+          "id": "5",
+          "name": "Footer Placeholder 4",
+          "bbox": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "order": 5,
+          "kind": "shape",
+          "scope": "layout",
+          "aid": "template/layout//ppt/slideLayouts/slideLayout2.xml/6",
+          "id": "6",
+          "name": "Slide Number Placeholder 5",
+          "bbox": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "text": "‹#›",
+          "textPreview": "‹#›",
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "‹#›",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "‹#›"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scope": "master",
+      "id": "/ppt/slideMasters/slideMaster1.xml",
+      "type": "master",
+      "elements": [
+        {
+          "order": 1,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/2",
+          "id": "2",
+          "name": "Title Placeholder 1",
+          "bbox": [
+            88,
+            38.33,
+            1104,
+            139.17
+          ],
+          "geometry": "rect",
+          "text": "Click to edit Master title style",
+          "textPreview": "Click to edit Master title style",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "vertical": 1,
+            "verticalAlignment": "middle",
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "Click to edit Master title style",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Click to edit Master title style"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 2,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/3",
+          "id": "3",
+          "name": "Text Placeholder 2",
+          "bbox": [
+            88,
+            191.67,
+            1104,
+            456.83
+          ],
+          "geometry": "rect",
+          "text": "Click to edit Master text styles\nSecond level\nThird level\nFourth level\nFifth level",
+          "textPreview": "Click to edit Master text styles | Second level | Third level | Fourth level | Fifth level",
+          "resolvedTextStyle": {
+            "vertical": 1,
+            "autoFit": "shrinkText",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "Click to edit Master text styles",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Click to edit Master text styles"
+                }
+              ]
+            },
+            {
+              "index": 2,
+              "text": "Second level",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Second level"
+                }
+              ]
+            },
+            {
+              "index": 3,
+              "text": "Third level",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Third level"
+                }
+              ]
+            },
+            {
+              "index": 4,
+              "text": "Fourth level",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Fourth level"
+                }
+              ]
+            },
+            {
+              "index": 5,
+              "text": "Fifth level",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "Fifth level"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 3,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/4",
+          "id": "4",
+          "name": "Date Placeholder 3",
+          "bbox": [
+            88,
+            667.33,
+            288,
+            38.33
+          ],
+          "geometry": "rect",
+          "text": "7/20/26",
+          "textPreview": "7/20/26",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "vertical": 1,
+            "verticalAlignment": "middle",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "7/20/26",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "7/20/26"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/5",
+          "id": "5",
+          "name": "Footer Placeholder 4",
+          "bbox": [
+            424,
+            667.33,
+            432,
+            38.33
+          ],
+          "geometry": "rect",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "vertical": 1,
+            "verticalAlignment": "middle",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          }
+        },
+        {
+          "order": 5,
+          "kind": "shape",
+          "scope": "master",
+          "aid": "template/master//ppt/slideMasters/slideMaster1.xml/6",
+          "id": "6",
+          "name": "Slide Number Placeholder 5",
+          "bbox": [
+            904,
+            667.33,
+            288,
+            38.33
+          ],
+          "geometry": "rect",
+          "text": "‹#›",
+          "textPreview": "‹#›",
+          "resolvedTextStyle": {
+            "anchor": 2,
+            "vertical": 1,
+            "verticalAlignment": "middle",
+            "insets": {
+              "top": 4.8,
+              "right": 9.6,
+              "bottom": 4.8,
+              "left": 9.6
+            }
+          },
+          "paragraphs": [
+            {
+              "index": 1,
+              "text": "‹#›",
+              "runs": [
+                {
+                  "index": 1,
+                  "text": "‹#›"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/5w365wne",
+      "id": "2",
+      "name": "Title 1",
+      "bbox": [
+        88,
+        38.33,
+        1104,
+        139.17
+      ],
+      "text": "III. Event-triggered control",
+      "textPreview": "III. Event-triggered control",
+      "resolvedFontSize": 58.67,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "vertical": 1,
+        "fontSize": 58.67,
+        "typeface": "Aptos Display",
+        "color": "#000000",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "autoFit": "none",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "III. Event-triggered control"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "III. Event-triggered control",
+          "resolvedTextStyle": {
+            "fontSize": 58.67,
+            "typeface": "Aptos Display",
+            "color": "#000000",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "III. Event-triggered control",
+              "fontSize": 58.67,
+              "typeface": "Aptos Display",
+              "color": "#000000",
+              "alignment": "left"
+            }
+          ],
+          "bulletCharacter": "",
+          "lineSpacingPercent": 90000
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/kva5wrm9",
+      "id": "3",
+      "name": "Content Placeholder 2",
+      "bbox": [
+        88,
+        191.67,
+        1104,
+        456.83
+      ],
+      "text": "Monitor: Track per-service performance and sustained degradation. Distinguish channel changes from low demand, contention and policy changes.\nSearch: Probe nearby tilt or pan–tilt states within a time budget. Periodically test distant states even when current performance is stable.\nVerify: Bracket each candidate with current-orientation probes. Accept when gain minus uncertainty exceeds the switch margin and service constraints pass.\nRecover: Confirm a committed move, roll back to a freshly checked backup if needed, and widen the search when local recovery fails.",
+      "textPreview": "Monitor: Track per-service performance and sustained degradation. Distinguish channel changes from low demand, contention and policy chan...",
+      "resolvedFontSize": 26.67,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "vertical": 1,
+        "fontSize": 26.67,
+        "typeface": "Aptos",
+        "color": "#000000",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "autoFit": "none",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 11,
+        "lines": [
+          {
+            "index": 1,
+            "text": "•Monitor: Track per-service performance and sustained degradation. Distinguish channel changes"
+          },
+          {
+            "index": 2,
+            "text": "from low demand, contention and policy changes."
+          },
+          {
+            "index": 3,
+            "text": ""
+          },
+          {
+            "index": 4,
+            "text": "•Search: Probe nearby tilt or pan–tilt states within a time budget. Periodically test distant states"
+          },
+          {
+            "index": 5,
+            "text": "even when current performance is stable."
+          },
+          {
+            "index": 6,
+            "text": ""
+          },
+          {
+            "index": 7,
+            "text": "•Verify: Bracket each candidate with current-orientation probes. Accept when gain minus"
+          },
+          {
+            "index": 8,
+            "text": "uncertainty exceeds the switch margin and service constraints pass."
+          },
+          {
+            "index": 9,
+            "text": ""
+          },
+          {
+            "index": 10,
+            "text": "•Recover: Confirm a committed move, roll back to a freshly checked backup if needed, and widen"
+          },
+          {
+            "index": 11,
+            "text": "the search when local recovery fails."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Monitor: Track per-service performance and sustained degradation. Distinguish channel changes from low demand, contention and policy changes.",
+          "bulletCharacter": "•",
+          "marginLeft": 228600,
+          "indent": -228600,
+          "spaceAfter": 1800,
+          "resolvedTextStyle": {
+            "fontSize": 26.67,
+            "typeface": "Aptos",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "shrinkText"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Monitor: ",
+              "fontSize": 26.67,
+              "typeface": "Aptos",
+              "color": "#000000",
+              "bold": true,
+              "alignment": "left"
+            },
+            {
+              "index": 2,
+              "text": "Track per-service performance and sustained degradation. Distinguish channel changes from low demand, contention and policy changes.",
+              "fontSize": 26.67,
+              "typeface": "Aptos",
+              "color": "#000000",
+              "alignment": "left"
+            }
+          ],
+          "lineSpacingPercent": 90000
+        },
+        {
+          "index": 2,
+          "text": "Search: Probe nearby tilt or pan–tilt states within a time budget. Periodically test distant states even when current performance is stable.",
+          "bulletCharacter": "•",
+          "marginLeft": 228600,
+          "indent": -228600,
+          "spaceAfter": 1800,
+          "resolvedTextStyle": {
+            "fontSize": 26.67,
+            "typeface": "Aptos",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "shrinkText"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Search: ",
+              "fontSize": 26.67,
+              "typeface": "Aptos",
+              "color": "#000000",
+              "bold": true,
+              "alignment": "left"
+            },
+            {
+              "index": 2,
+              "text": "Probe nearby tilt or pan–tilt states within a time budget. Periodically test distant states even when current performance is stable.",
+              "fontSize": 26.67,
+              "typeface": "Aptos",
+              "color": "#000000",
+              "alignment": "left"
+            }
+          ],
+          "lineSpacingPercent": 90000
+        },
+        {
+          "index": 3,
+          "text": "Verify: Bracket each candidate with current-orientation probes. Accept when gain minus uncertainty exceeds the switch margin and service constraints pass.",
+          "bulletCharacter": "•",
+          "marginLeft": 228600,
+          "indent": -228600,
+          "spaceAfter": 1800,
+          "resolvedTextStyle": {
+            "fontSize": 26.67,
+            "typeface": "Aptos",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "shrinkText"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Verify: ",
+              "fontSize": 26.67,
+              "typeface": "Aptos",
+              "color": "#000000",
+              "bold": true,
+              "alignment": "left"
+            },
+            {
+              "index": 2,
+              "text": "Bracket each candidate with current-orientation probes. Accept when gain minus uncertainty exceeds the switch margin and service constraints pass.",
+              "fontSize": 26.67,
+              "typeface": "Aptos",
+              "color": "#000000",
+              "alignment": "left"
+            }
+          ],
+          "lineSpacingPercent": 90000
+        },
+        {
+          "index": 4,
+          "text": "Recover: Confirm a committed move, roll back to a freshly checked backup if needed, and widen the search when local recovery fails.",
+          "bulletCharacter": "•",
+          "marginLeft": 228600,
+          "indent": -228600,
+          "spaceAfter": 1800,
+          "resolvedTextStyle": {
+            "fontSize": 26.67,
+            "typeface": "Aptos",
+            "color": "#000000",
+            "alignment": "left",
+            "autoFit": "shrinkText"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Recover: ",
+              "fontSize": 26.67,
+              "typeface": "Aptos",
+              "color": "#000000",
+              "bold": true,
+              "alignment": "left"
+            },
+            {
+              "index": 2,
+              "text": "Confirm a committed move, roll back to a freshly checked backup if needed, and widen the search when local recovery fails.",
+              "fontSize": 26.67,
+              "typeface": "Aptos",
+              "color": "#000000",
+              "alignment": "left"
+            }
+          ],
+          "lineSpacingPercent": 90000
+        }
+      ]
+    }
+  ],
+  "composeRuns": []
+}

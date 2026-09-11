@@ -7,15 +7,15 @@ This document is organized into three parts:
 
 1. [Part I: AoA Estimation with MUSIC, ESPRIT, and SAGE](#part-i-aoa-estimation-with-music-esprit-and-sage) develops the signal models and three estimators for 1-D and 2-D rotation.
 2. [Part II: Finding the Optimal Antenna Orientation](#part-ii-finding-the-optimal-antenna-orientation) uses MUSIC/SAGE channel estimates to optimize one source, aggregate multi-source goodput, or prioritized services.
-3. [Part III: Continuous Orientation Optimization in Changing Environments](#part-iii-continuous-orientation-optimization-in-changing-environments) develops periodic rescanning, event-triggered adaptation, and [learning-assisted predictive adaptation](#17-scheme-c-learning-assisted-predictive-adaptation) based on recurring household usage.
+3. [Part III: Continuous Orientation Optimization in Changing Environments](#part-iii-continuous-orientation-optimization-in-changing-environments) develops periodic rescanning, event-triggered adaptation, and [learning-assisted predictive adaptation](#36-scheme-c-learning-assisted-predictive-adaptation) based on recurring household usage.
 
-Numbered sections run continuously across the three parts so that existing section references remain valid.
+Sections are numbered within each part: 1.n, 2.n, and 3.n; subsections use 1.n.m, 2.n.m, and 3.n.m. All section references follow this hierarchy.
 
 ---
 
 # Part I: AoA Estimation with MUSIC, ESPRIT, and SAGE
 
-## 1. Purpose and Scope
+## 1.1 Purpose and Scope
 
 Part I formulates, from first principles, how a single Wi-Fi antenna that is mechanically rotated about a fixed base can be used to estimate the angle of arrival (AoA) of one or more incoming signals, and then derives three classical estimators — MUSIC, ESPRIT, and SAGE — for two rotation geometries:
 
@@ -24,9 +24,9 @@ Part I formulates, from first principles, how a single Wi-Fi antenna that is mec
 
 The physical idea in both cases is the same: mechanical rotation turns one antenna, sampled sequentially over time, into a synthetic array. Part I first builds the shared signal model and states the core measurement challenges (the "problem construction"), then treats each scenario in turn. Assumptions: a common consumer Wi-Fi element with a dipole-like (omni-in-azimuth, toroidal / donut-shaped) radiation pattern; an OFDM Wi-Fi waveform (2.4 / 5 / 6 GHz) that exposes per-subcarrier channel state information (CSI); and quasi-static geometry during one sweep.
 
-## 2. Shared Signal and Geometry Model
+## 1.2 Shared Signal and Geometry Model
 
-### 2.1 Antenna pattern and phase center
+### 1.2.1 Antenna pattern and phase center
 
 Let the antenna body frame have its axis along $\hat z_{\text{body}}$. A typical half-wave dipole has the (magnitude) field pattern
 
@@ -36,7 +36,7 @@ $$
 
 where $\chi$ is the angle between the antenna axis and the incoming direction. $F(\chi)$ is maximum broadside ($\chi = 90^\circ$) and has deep nulls along the axis ($\chi = 0^\circ, 180^\circ$). Two features of the element matter for AoA: (i) its *directional gain* $g(\chi) = F(\chi)\cdot e^{j\Phi(\chi)}$ modulates the received amplitude as the antenna rotates, and (ii) its *phase center* sits a distance $\rho$ from the base along the antenna axis, so rotation physically displaces the phase center and creates path-length (phase) differences. The amplitude cue dominates when $\rho \ll \lambda$; the phase (synthetic-aperture) cue grows as $\rho$ approaches $\lambda$. For a quarter/half-wave element at 2.4 GHz ($\lambda \approx 12.5$ cm) the arc radius $\rho$ is a fraction of $\lambda$, so a good estimator should exploit amplitude and phase jointly.
 
-### 2.2 Received-signal model
+### 1.2.2 Received-signal model
 
 Index the rotation positions by $k = 1,\dots,K$ (orientation $\Omega_k$), OFDM subcarriers by $n = 1,\dots,L$ (wavelength $\lambda_n$), and repeated sweeps / symbols by $t = 1,\dots,M$. After removing the known pilot/preamble symbol $s[n,t]$ (WiFi LTF), the measured complex CSI sample for a single far-field path from direction $\mathbf u(\theta,\phi)$ is
 
@@ -52,16 +52,16 @@ $$
 
 with steering vector $\mathbf a(\theta,\phi) = [a_1,\dots,a_K]^{\mathsf T}$, $a_k(\theta,\phi) = g(\chi_k)\cdot \exp\!\left(j\frac{2\pi}{\lambda}\mathbf p_k^{\mathsf T}\mathbf u\right)$, manifold matrix $\mathbf A = [\mathbf a(\theta_1,\phi_1),\dots,\mathbf a(\theta_D,\phi_D)]$, and gain vector $\boldsymbol\gamma$. This $\mathbf A\boldsymbol\gamma + \mathbf w$ form is exactly the classical array-processing model — MUSIC, ESPRIT, and SAGE all operate on it — except that here the "array" is synthesised by one moving element and the manifold $\mathbf a(\cdot)$ carries the real antenna pattern $g$, not just an ideal phase term.
 
-### 2.3 Problem construction — the four challenges unique to a rotating single antenna
+### 1.2.3 Problem construction — the four challenges unique to a rotating single antenna
 
 1. **Sequential (non-simultaneous) sampling.** The $K$ synthetic elements are visited one at a time, not captured in one snapshot. Treating them as a single vector $\mathbf x$ requires the channel and source to stay coherent across the whole sweep (quasi-static assumption). Sweep-time budget therefore trades against Doppler/scene motion.
 2. **Phase-coherence / reference.** Combining positions by phase demands a common phase reference across the sweep; otherwise transmitter phase, CFO and SFO drift corrupt $\mathbf p_k^{\mathsf T}\mathbf u$. Practical fixes: keep a second fixed reference antenna receiving simultaneously and use the ratio $x_k / x_{\text{ref}}$; or exploit the repeated WiFi LTF pilots to track and remove residual phase. Without a reference, fall back to amplitude-only ($|x_k|$) processing — lower resolution but robust.
 3. **Coherent multipath.** Indoor reflections are fully correlated with the LoS path, which rank-deficits the covariance and breaks subspace methods. Remedies: spatial smoothing / forward-backward averaging (in phase-mode / beamspace for the circular manifold), or use SAGE, which is a parametric maximum-likelihood method that handles coherent paths natively.
 4. **Pattern and phase-center calibration.** The estimators need an accurate measured $g(\chi)$ and $\rho$. Manufacturing spread, the radome, and near-field coupling to the AP chassis distort the pattern, so a per-unit calibration table (or an on-line self-calibration term) is required.
 
-## 3. Scenario A — Single-Axis (1-DoF) Planar Rotation
+## 1.3 Scenario A — Single-Axis (1-DoF) Planar Rotation
 
-### 3.1 Geometry and rotation model
+### 1.3.1 Geometry and rotation model
 
 Place the base at the origin $O$ and let the antenna tilt in the $x$–$z$ (vertical) plane about the $\hat y$ axis. With step $\Delta = 5^\circ$ and $k = 0,\dots,36$ ($K = 37$ positions):
 
@@ -89,11 +89,11 @@ $$
 
 This is a circular-array manifold. Its key structural property: the response as a function of orientation is a fixed "template" $F(\cdot)\cdot\exp\!\left(j\frac{2\pi\rho}{\lambda}\cos(\cdot)\right)$ that is simply *shifted* by the unknown AoA $\psi$. For a single source, AoA estimation is therefore matched filtering — correlate the measured curve against the template and read off the shift. MUSIC/ESPRIT/SAGE generalise this to multiple superimposed paths.
 
-**Note — dimensionality.** *One rotation axis resolves only the arrival angle projected into the scan plane; an out-of-plane source appears at its projected angle. Full 2-D AoA (azimuth + elevation) requires the 2-axis system of Section 4.*
+**Note — dimensionality.** *One rotation axis resolves only the arrival angle projected into the scan plane; an out-of-plane source appears at its projected angle. Full 2-D AoA (azimuth + elevation) requires the 2-axis system of Section 1.4.*
 
 **Note — sampling.** *To avoid spatial aliasing on the synthetic arc, the inter-step arc length must satisfy $\rho\cdot\Delta_{\text{rad}} \le \lambda/2$, i.e. $\rho \le \dfrac{\lambda}{2\times 0.087} \approx 5.7\lambda$ for $\Delta = 5^\circ$. For a physical element $\rho \ll \lambda$ this is amply satisfied; 5° in fact oversamples, giving margin to average or to coarsen the sweep.*
 
-### 3.2 Building snapshots and the covariance
+### 1.3.2 Building snapshots and the covariance
 
 Subspace methods need a covariance estimate of full signal rank. Because one sweep yields a single synthetic vector $\mathbf x$, obtain multiple snapshots by (i) repeating the sweep $M$ times, (ii) using the $L$ OFDM subcarriers as frequency snapshots (recomputing $\mathbf a(\psi)$ per $\lambda_n$, or applying wideband focusing matrices), and (iii) forward–backward / phase-mode spatial smoothing to decorrelate coherent multipath:
 
@@ -101,7 +101,7 @@ $$
 \hat{\mathbf R} = \frac{1}{M L}\sum_{m,n} \mathbf x[m,n]\,\mathbf x[m,n]^{\mathsf H} \in \mathbb{C}^{K\times K}
 $$
 
-### 3.3 MUSIC
+### 1.3.3 MUSIC
 
 Eigendecompose the covariance and split into signal ($D$ largest eigenvalues) and noise subspaces:
 
@@ -117,7 +117,7 @@ $$
 
 Because the manifold $\mathbf a(\psi)$ embeds the true antenna pattern, MUSIC here automatically fuses the amplitude (pattern) and phase (aperture) cues. The number of resolvable paths is limited by $K$ and by how well multipath has been decorrelated.
 
-### 3.4 ESPRIT
+### 1.3.4 ESPRIT
 
 ESPRIT needs a shift-invariant (Vandermonde) manifold, which a circular arc does not have directly. The standard route is a **phase-mode / beamspace transform** (the Davies transformation used in UCA-ESPRIT): a DFT across the uniform 5° samples maps the circular manifold, whose modes are weighted by Bessel functions $J_m(2\pi\rho/\lambda)$, onto a virtual uniform linear array with entries $e^{jm\psi}$:
 
@@ -137,7 +137,7 @@ $$
 
 ESPRIT gives the AoAs in closed form (no spectral search), at the cost of the beamspace approximation and sensitivity to the accuracy of $\rho$ and of the uniform-angular-sampling assumption.
 
-### 3.5 SAGE
+### 1.3.5 SAGE
 
 SAGE (Space-Alternating Generalized Expectation-maximization) is a maximum-likelihood estimator that fits the $D$ paths one at a time and is the most natural fit for a rotating single antenna: it works with few (even one) snapshots, tolerates coherent multipath, uses the measured pattern $g$ directly (no idealised manifold), and jointly estimates amplitude and angle. Model the $K$ measurements as
 
@@ -169,9 +169,9 @@ SAGE decomposes the observation into per-path "admissible hidden data" and alter
 
 Because SAGE evaluates the exact pattern-plus-phase manifold, it degrades gracefully when the aperture is tiny (falls back to pattern/amplitude information) and when only magnitudes are trustworthy (magnitude-only likelihood).
 
-## 4. Scenario B — Two-Axis (Pan–Tilt) Rotation
+## 1.4 Scenario B — Two-Axis (Pan–Tilt) Rotation
 
-### 4.1 Completing the spatial rotation model
+### 1.4.1 Completing the spatial rotation model
 
 Give the base a 2-axis gimbal: a tilt (elevation) $\alpha$ about $\hat y$ and a pan (azimuth) $\gamma$ about $\hat z$. Using the intrinsic rotation $\mathbf R(\gamma,\alpha) = \mathbf R_z(\gamma)\cdot \mathbf R_y(\alpha)$ applied to the body axis $\hat z_{\text{body}}$, the boresight and phase-center trace a sphere of radius $\rho$:
 
@@ -201,11 +201,11 @@ $$
 
 As in Scenario A the response depends on the mismatch between where the antenna points and where the source is (through $\chi$ and through $\hat{\mathbf b}^{\mathsf T}\mathbf u = \cos\chi$), so for a single source it is again a 2-D template-matching / peak-finding problem; for multipath it is the full 2-D array model. Practical modelling points: use intrinsic Euler angles and restrict $\alpha \in [0^\circ,90^\circ]$, $\gamma \in [0^\circ,360^\circ)$ to cover the upper hemisphere while avoiding gimbal-lock degeneracy near $\alpha = 0^\circ$ (where $\gamma$ is unobservable); and pre-compute a calibrated $a(\theta,\phi;\gamma,\alpha)$ lookup because the two-axis pattern is not separable in general.
 
-### 4.2 Sampling the sphere
+### 1.4.2 Sampling the sphere
 
 A comprehensive raster over $(\gamma,\alpha)$ should keep neighbouring pointings within roughly half the element beamwidth (and satisfy the $\rho\cdot\Delta \le \lambda/2$ arc-sampling rule per axis) so that no lobe of the pattern is skipped. An equal-area or spiral spherical grid gives more uniform angular coverage than a naïve lat/long raster, which oversamples near the pole ($\alpha \approx 0^\circ$).
 
-### 4.3 Two operating modes: fast few-measurement search vs. comprehensive scan
+### 1.4.3 Two operating modes: fast few-measurement search vs. comprehensive scan
 
 The 2-axis freedom creates a genuine choice between finding one dominant source as fast as possible and mapping the whole angular field.
 
@@ -225,7 +225,7 @@ Rastering the whole $(\gamma,\alpha)$ grid and applying a subspace / ML estimato
 
 **Guidance.** *Use fast active pointing to acquire/track a single high-priority client or to re-lock after a small move; use a comprehensive scan (periodically or on trigger) to build the multi-path spatial map used for multi-client orientation optimisation and for detecting new reflectors.*
 
-### 4.4 MUSIC, ESPRIT, and SAGE in 2-D
+### 1.4.4 MUSIC, ESPRIT, and SAGE in 2-D
 
 **MUSIC (2-D):** build $\hat{\mathbf R}$ over the sampled orientations (plus subcarrier/sweep snapshots), and search the pseudo-spectrum over the $(\theta,\phi)$ grid:
 
@@ -235,9 +235,9 @@ $$
 
 **ESPRIT (2-D):** decompose the spherical manifold into spherical-harmonic / phase modes (a 2-D beamspace transform), which yields two shift-invariant structures — one per angular coordinate — so that Unitary / EB-ESPRIT returns azimuth and elevation in closed form with automatic pairing. Fast, but relies on the harmonic approximation and accurate calibration.
 
-**SAGE (2-D, recommended):** the same per-path coordinate-ascent as §3.5, now maximising over the pair $(\theta_d, \phi_d)$, and optionally over delay $\tau_d$ (OFDM) and Doppler $\nu_d$. SAGE remains the workhorse for the rotating-antenna problem: it copes with the irregular spherical sampling, coherent multipath, few snapshots, and the real (non-separable, calibrated) 2-axis pattern, and it produces the parametric path list that both operating modes above can consume.
+**SAGE (2-D, recommended):** the same per-path coordinate-ascent as §1.3.5, now maximising over the pair $(\theta_d, \phi_d)$, and optionally over delay $\tau_d$ (OFDM) and Doppler $\nu_d$. SAGE remains the workhorse for the rotating-antenna problem: it copes with the irregular spherical sampling, coherent multipath, few snapshots, and the real (non-separable, calibrated) 2-axis pattern, and it produces the parametric path list that both operating modes above can consume.
 
-## 5. Practical Wi-Fi Implementation Notes
+## 1.5 Practical Wi-Fi Implementation Notes
 
 - **CSI as free snapshots.** Each WiFi packet's LTF gives CSI on $L$ subcarriers; across a 20/40/80/160 MHz channel these act as frequency snapshots and also let SAGE estimate path delay from the phase-vs-subcarrier slope.
 - **Reference antenna.** A second, fixed antenna receiving the same packet provides the phase reference that makes cross-position phase meaningful; process $x_k / x_{\text{ref}}$.
@@ -245,7 +245,7 @@ $$
 - **Calibration.** Store a measured $g(\chi)$ (and $\rho$, and the 2-axis pattern for Scenario B) per antenna; re-estimate a residual complex calibration term on-line from a known-direction anchor if available.
 - **Fallback.** If phase coherence cannot be guaranteed, run amplitude-only pattern-matching (or magnitude-domain SAGE): coarser, but requires no reference and no phase tracking.
 
-## 6. Estimator Comparison
+## 1.6 Estimator Comparison
 
 | **Method** | **Principle**               | **Snapshots**                   | **Coherent MP** | **Output**                                   | **Best use here**                                          |
 | ---------------- | --------------------------------- | ------------------------------------- | --------------------- | -------------------------------------------------- | ---------------------------------------------------------------- |
@@ -253,7 +253,7 @@ $$
 | **ESPRIT** | Rotational invariance (beamspace) | Moderate                              | Needs smoothing       | Closed-form angles                                 | Fast closed-form angle read-out after beamspace transform        |
 | **SAGE**   | Per-path maximum likelihood (EM)  | Few / even one                        | Handled natively      | Parametric path list (angle, gain, delay, Doppler) | Primary estimator: irregular sampling, real pattern, coherent MP |
 
-## 7. Notation
+## 1.7 Notation
 
 | **Symbol**                                                                                                               | **Meaning**                                              |
 | ------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------- |
@@ -275,13 +275,13 @@ $$
 
 # Part II: Finding the Optimal Antenna Orientation
 
-## 8. From AoA Estimation to Antenna Orientation Optimization
+## 2.1 From AoA Estimation to Antenna Orientation Optimization
 
-Part II extends AoA estimation into a control problem: estimate channels with MUSIC or SAGE, predict performance at candidate antenna orientations, and select and verify the best orientation. Section 9 treats **1-D mechanical rotation** first; Section 10 then treats **2-D mechanical rotation**. Each considers (1) one source, (2) multiple sources with an aggregate-throughput objective, and (3) multiple sources carrying services with different priorities.
+Part II extends AoA estimation into a control problem: estimate channels with MUSIC or SAGE, predict performance at candidate antenna orientations, and select and verify the best orientation. Section 2.2 treats **1-D mechanical rotation** first; Section 2.3 then treats **2-D mechanical rotation**. Each considers (1) one source, (2) multiple sources with an aggregate-throughput objective, and (3) multiple sources carrying services with different priorities.
 
 These are proposed system models and algorithm designs, rather than claims of measured performance. MUSIC and SAGE estimate propagation parameters; a separate optimization stage chooses the antenna orientation. Part II focuses on MUSIC and SAGE; ESPRIT is covered in Part I.
 
-### 8.1 Definitions, geometry conventions, and assumptions
+### 2.1.1 Definitions, geometry conventions, and assumptions
 
 - **Controlled device:** one Wi-Fi receiver, such as an AP, with one mechanically movable antenna and one data-reception RF chain. The baseline optimizes uplink reception from associated clients. Downlink use requires corresponding link measurements and calibration; uplink goodput is not automatically a downlink prediction.
 - **Source versus path:** $i=1,\ldots,N$ indexes transmitters/links; $d=1,\ldots,D_i$ indexes paths of transmitter $i$. Several AoA peaks can be reflections of one source and belong to one channel.
@@ -291,9 +291,9 @@ These are proposed system models and algorithm designs, rather than claims of me
 - **Time scale:** geometry and relative path coefficients remain stable over a scan, validation probes, and the intended holding interval. Traffic demand, weights, and the airtime policy are frozen for one optimization epoch and updated between epochs.
 - **Calibration:** correct receiver gain changes, packet timing offsets, and phase drift across orientations. A fixed reference must be stable and nonzero, and its frequency response must be accounted for when estimating delays and absolute received power. An arbitrary CSI ratio is not itself an absolute channel calibration.
 
-**Angle convention.** In the equations of Section 4, $\alpha$ and $\theta$ are mathematically *polar angles from $+z$*, despite their earlier elevation labels. Elevation above the horizontal is $90^\circ-\alpha$ or $90^\circ-\theta$. The extension retains those equations and uses the polar-angle interpretation. For a dipole, $\hat{\mathbf b}$ denotes its **axis**: gain is normally greatest broadside to it, not along it. The 1-D model below explicitly assumes in-plane paths; a general out-of-plane path is not exactly equivalent to its projected in-plane angle.
+**Angle convention.** In the equations of Section 1.4, $\alpha$ and $\theta$ are mathematically *polar angles from $+z$*, despite their earlier elevation labels. Elevation above the horizontal is $90^\circ-\alpha$ or $90^\circ-\theta$. The extension retains those equations and uses the polar-angle interpretation. For a dipole, $\hat{\mathbf b}$ denotes its **axis**: gain is normally greatest broadside to it, not along it. The 1-D model below explicitly assumes in-plane paths; a general out-of-plane path is not exactly equivalent to its projected in-plane angle.
 
-### 8.2 Channel model shared by all cases
+### 2.1.2 Channel model shared by all cases
 
 Use $c_{i,d}[m]$ for complex path gain, avoiding confusion with pan angle $\gamma$. Let $\xi_{i,d}$ denote $\psi_{i,d}$ in 1-D or $(\theta_{i,d},\phi_{i,d})$ in 2-D. With path delay $\tau_{i,d}$ and reference frequency $f_0$,
 
@@ -327,7 +327,7 @@ Noise and interference powers use the same subcarrier bandwidth as the numerator
 
 **Coherent multipath must be added before taking power:** use $|\sum_d c_{i,d}a_n e^{-j2\pi(f_n-f_0)\tau_{i,d}}|^2$. Replacing this by $\sum_d|c_{i,d}a_n|^2$ loses constructive/destructive interference and is justified only for an appropriate incoherent ensemble average. With repeated sweeps, score each fitted channel realization and average the resulting utilities.
 
-### 8.3 A practical throughput objective
+### 2.1.3 A practical throughput objective
 
 Use **goodput**, the rate of successfully delivered, non-duplicate payload bits. This excludes protocol overhead and retransmitted copies. Power and SINR are predictors, but maximizing either need not maximize useful Wi-Fi traffic.
 
@@ -348,7 +348,7 @@ $$
 
 The baseline holds $a_i$ fixed during the orientation search. Under contention-based access, these are estimated shares that may change with orientation; final measurements must use the actual access policy. Summing isolated full-airtime link rates would incorrectly give every client the entire channel.
 
-### 8.4 MUSIC estimation and channel reconstruction
+### 2.1.4 MUSIC estimation and channel reconstruction
 
 MUSIC estimates directions from a noise subspace. **Pseudo-spectrum peak heights are not physical path powers or service weights.** Recover complex gains after finding peaks, then predict the channel at candidate orientations.
 
@@ -426,7 +426,7 @@ function MUSIC_FIT(data_i, geometry, calibration, path_count_or_limit):
 
 Choose $D_i$ from prior knowledge or bounded model selection using eigenvalues, the noise floor, and held-out residuals. The number of clients is not the number of paths. Overlapping frequency windows are dependent observations, which matters for statistical model-order criteria.
 
-### 8.5 SAGE estimation and channel reconstruction
+### 2.1.5 SAGE estimation and channel reconstruction
 
 Use the full-frequency model
 
@@ -476,7 +476,7 @@ function SAGE_FIT(data_i, geometry, calibration, path_count_or_limit):
 
 SAGE does not require full-rank source covariance, but still requires informative measurements and an identifiable model. Neither estimator can distinguish geometrically identical responses. If phase coherence fails, use a separately derived magnitude likelihood or direct measured-orientation search; substituting magnitudes into these complex-valued formulas is invalid.
 
-### 8.6 Shared orientation selection and physical verification
+### 2.1.6 Shared orientation selection and physical verification
 
 Estimator searches concern arrival directions $\xi$; control searches concern operational orientations $q$. All six cases use the following routine.
 
@@ -506,11 +506,11 @@ $$
 
 Multiply data-interval throughputs by $\zeta$ for epoch-level comparisons. Include candidate-dependent movement costs when relevant. Mechanical repositioning should occur over adaptation epochs, not on every packet.
 
-## 9. 1-D Rotation: Three Optimization Scenarios
+## 2.2 1-D Rotation: Three Optimization Scenarios
 
-### 9.1 Common 1-D system model
+### 2.2.1 Common 1-D system model
 
-Retain the geometry of Section 3:
+Retain the geometry of Section 1.3:
 
 $$
 \hat{\mathbf d}(\beta)=(\cos\beta,0,\sin\beta),\quad
@@ -537,7 +537,7 @@ $$
 
 The sweep index $m$ is suppressed below for readability. Predictions can be averaged over fitted sweep realizations. For a real antenna, replace $g_n(\chi)$ by the calibrated response $g_n(\beta,\psi)$ when needed. Evaluate the dipole pattern at its axial nulls by its limiting value of zero, avoiding numerical division by zero.
 
-### 9.2 Scenario 1: optimize reception from one signal source
+### 2.2.2 Scenario 1: optimize reception from one signal source
 
 **System model and objective.** Set $N=1$, but allow $D_1\geq1$: one client can have multiple coherent propagation paths. To implement “make this source's signal as good as possible,” use average subcarrier SINR,
 
@@ -549,7 +549,7 @@ J_{1,\mathrm{link}}(\beta)=\frac{1}{|\mathcal N_1|}
 \beta^\star=\arg\max_{\beta\in\mathcal Q_1}J_{1,\mathrm{link}}(\beta).
 $$
 
-For an isolated transmitter with equal noise powers this becomes a received-power objective, up to fixed scaling. If useful data delivery is the intended meaning of “best,” replace $J_{1,\mathrm{link}}$ by $T_1(\beta)$ from Section 8.3. Average SINR is a signal-quality criterion, not an exact OFDM goodput metric.
+For an isolated transmitter with equal noise powers this becomes a received-power objective, up to fixed scaling. If useful data delivery is the intended meaning of “best,” replace $J_{1,\mathrm{link}}$ by $T_1(\beta)$ from Section 2.1.3. Average SINR is a signal-quality criterion, not an exact OFDM goodput metric.
 
 For one path, no orientation-dependent interference, and an ideal dipole without polarization mismatch,
 
@@ -594,7 +594,7 @@ Input: source-1 training CSI, calibration, Q1, current tilt beta0
 Output: selected tilt and verified source-1 signal quality
 ```
 
-### 9.3 Scenario 2: optimize aggregate throughput from multiple sources
+### 2.2.3 Scenario 2: optimize aggregate throughput from multiple sources
 
 **System model and objective.** There are $N\geq2$ clients with channels $h_i^{(1)}[n;\beta]$. All use one shared antenna orientation. Fix airtime shares $a_i$ and offered loads $\ell_i$ during each decision:
 
@@ -641,7 +641,7 @@ Input: labeled CSI for N clients, calibration, Q1, {a_i, load_i}, beta0
 Output: selected tilt, aggregate goodput, and individual client goodputs
 ```
 
-### 9.4 Scenario 3: optimize multiple services with different priorities
+### 2.2.4 Scenario 3: optimize multiple services with different priorities
 
 **Available classification inputs.** Assume a separate network component already supplies flow-to-client mapping $i(f)$ and service labels. Suitable inputs include application/session metadata, configured endpoint or port policies, IP DSCP markings, 802.11 QoS TID/user priority and WMM access category, plus observed rate demand, packet timing, queue delay, loss, and deadline requirements. Packet content may help when available, but encrypted payload content is not assumed readable. An arrival direction alone is not a service identifier.
 
@@ -740,9 +740,9 @@ $$
 
 With $U_f(t)=t$ this is a linear program; with $U_f(t)=\log(1+t/r_f^{\mathrm{ref}})$ it is a convex optimization problem expressed as concave maximization. Select the orientation with the best feasible inner optimum, then implement and verify both choices. Ordinary contention-based Wi-Fi does not directly enforce arbitrary airtime allocations; the fixed-policy baseline applies unless scheduler control is actually available.
 
-## 10. 2-D Rotation: Three Optimization Scenarios
+## 2.3 2-D Rotation: Three Optimization Scenarios
 
-### 10.1 Common 2-D system model
+### 2.3.1 Common 2-D system model
 
 The control variable is $q=(\gamma,\alpha)$, with pan $\gamma\in[0^\circ,360^\circ)$ and polar tilt $\alpha\in[0^\circ,90^\circ]$:
 
@@ -786,7 +786,7 @@ $$
 [a_n^{(2)}(q_1;\theta,\phi),\ldots,a_n^{(2)}(q_K;\theta,\phi)]^{\mathsf T},
 $$
 
-then search the normalized spectrum jointly over $(\theta,\phi)$. For the frequency-smoothed version in Section 8.4, search over $(\theta,\phi,\tau)$. This is a joint manifold search, not two unrelated 1-D peak searches, so angular coordinates remain paired.
+then search the normalized spectrum jointly over $(\theta,\phi)$. For the frequency-smoothed version in Section 2.1.4, search over $(\theta,\phi,\tau)$. This is a joint manifold search, not two unrelated 1-D peak searches, so angular coordinates remain paired.
 
 For SAGE, use the exact response vector across orientation/tone samples and update each path by
 
@@ -799,7 +799,7 @@ $$
 
 Use a coarse joint grid followed by local refinement, or improving coordinate updates initialized from several joint candidates. A local coordinate search can miss another mode, so retain multiple starts. Neither estimator's angular peak is itself the operational pan-tilt solution; that requires the following performance optimization.
 
-### 10.2 Scenario 1: optimize reception from one signal source
+### 2.3.2 Scenario 1: optimize reception from one signal source
 
 **System model and objective.** Set $N=1$, with any supported number of paths $D_1$. Define
 
@@ -851,7 +851,7 @@ Input: source-1 CSI over a 2-D scan, calibration, Q2, current orientation q0
 Output: selected pan-tilt pair and source-1 signal quality
 ```
 
-### 10.3 Scenario 2: optimize aggregate throughput from multiple sources
+### 2.3.3 Scenario 2: optimize aggregate throughput from multiple sources
 
 **System model and objective.** Each client has its own $h_i^{(2)}[n;q]$, but all share the same orientation:
 
@@ -904,11 +904,11 @@ Input: labeled 2-D CSI, calibration, Q2, client airtime/load policy, q0
 Output: selected pan-tilt pair and verified multi-client performance
 ```
 
-If $\mathcal Q_2$ contains every physical orientation in $\mathcal Q_1$, and calibration, traffic policy, and scoring are identical, the best predicted 2-D score cannot be below the best predicted 1-D score. This does not guarantee better measured epoch-level throughput: a 2-D scan may consume substantially more time, so Section 8.6's overhead accounting still applies.
+If $\mathcal Q_2$ contains every physical orientation in $\mathcal Q_1$, and calibration, traffic policy, and scoring are identical, the best predicted 2-D score cannot be below the best predicted 1-D score. This does not guarantee better measured epoch-level throughput: a 2-D scan may consume substantially more time, so Section 2.1.6's overhead accounting still applies.
 
-### 10.4 Scenario 3: optimize multiple services with different priorities
+### 2.3.4 Scenario 3: optimize multiple services with different priorities
 
-**System model.** Use the service identities, policy inputs, and illustrative weights in Section 9.4. Classification need not change when the antenna gains a second rotational degree of freedom. For flow $f$,
+**System model.** Use the service identities, policy inputs, and illustrative weights in Section 2.2.4. Classification need not change when the antenna gains a second rotational degree of freedom. For flow $f$,
 
 $$
 T_f(q)=\min\{\ell_f,a_f C_{i(f)}(q)\},\qquad
@@ -930,7 +930,7 @@ J_{2,\mathrm{utility}}(q)=
 \sum_f w_f\log\!\left(1+\frac{T_f(q)}{r_f^{\mathrm{ref}}}\right).
 $$
 
-Use the same active-service constraints $T_f(q)\geq r_f^{\min}$ and measured delay/deadline checks as in 1-D. If scheduler control is available, apply the inner airtime-allocation problem from Section 9.4 at each 2-D candidate.
+Use the same active-service constraints $T_f(q)\geq r_f^{\min}$ and measured delay/deadline checks as in 1-D. If scheduler control is available, apply the inner airtime-allocation problem from Section 2.2.4 at each 2-D candidate.
 
 The decision is a common physical orientation that improves the specified service objective. If two high-priority services arrive through different clients, their gains trade off through $q$. If they share a client, both use the same spatial channel, and their different priorities enter through weights, demand, airtime, and constraints.
 
@@ -969,7 +969,7 @@ Input: labeled 2-D CSI, calibration, Q2, q0,
 Output: pan-tilt pair, weighted utility, service metrics, feasibility status
 ```
 
-## 11. Implementation and Evaluation of Orientation Selection
+## 2.4 Implementation and Evaluation of Orientation Selection
 
 The following sequence makes the proposed models testable on hardware:
 
@@ -996,9 +996,9 @@ All six cases finish with the same physical control action: select one feasible 
 
 # Part III: Continuous Orientation Optimization in Changing Environments
 
-## 12. Dynamic System Model and Shared Measurement Rules
+## 3.1 Dynamic System Model and Shared Measurement Rules
 
-Part II selects an orientation for an approximately fixed environment. Part III considers what happens afterward: clients move, propagation paths change, interference varies, and service priorities evolve. Sections 13 and 14 establish two baseline controllers; Sections 17–20 add a predictive learning mode:
+Part II selects an orientation for an approximately fixed environment. Part III considers what happens afterward: clients move, propagation paths change, interference varies, and service priorities evolve. Sections 3.2 and 3.3 establish two baseline controllers; Sections 3.6–3.9 add a predictive learning mode:
 
 - **Scheme A — fixed-period full rescanning:** perform a complete scan of the configured feasible grid at predetermined intervals, select and verify an orientation, then hold it until the next scan.
 - **Scheme B — event-triggered local search with low-frequency global exploration:** monitor performance, respond to persistent degradation with local probing, and occasionally inspect distant orientations. Escalate to wider or complete scans when needed.
@@ -1006,9 +1006,9 @@ Part II selects an orientation for an approximately fixed environment. Part III 
 
 All three controllers support the 1-D and 2-D geometries and all three objectives in Part II. They use the same hardware, feasible orientations, measurement procedures, service constraints, and estimator reliability checks. The controller designs below are proposed adaptations for this system, not validated performance claims.
 
-### 12.1 Time-varying channel and objective
+### 3.1.1 Time-varying channel and objective
 
-In this part, $t$ denotes physical time. Let $q(t)$ be the commanded orientation: $\beta(t)$ in 1-D or $(\gamma(t),\alpha(t))$ in 2-D. Generalize Section 8.2 to
+In this part, $t$ denotes physical time. Let $q(t)$ be the commanded orientation: $\beta(t)$ in 1-D or $(\gamma(t),\alpha(t))$ in 2-D. Generalize Section 2.1.2 to
 
 $$
 h_i[n;q,t]=\sum_{d=1}^{D_i(t)}
@@ -1035,7 +1035,7 @@ The physical controller cannot know this target continuously without exploration
 
 A priority change modifies the objective even if propagation is unchanged. Compare orientations under the same current context; do not interpret an old weighted score and a new weighted score as a channel-change measurement.
 
-### 12.2 Measurements, stationarity, and detection signals
+### 3.1.2 Measurements, stationarity, and detection signals
 
 A measurement is a finite-window observation:
 
@@ -1055,7 +1055,7 @@ Two different time-scale assumptions matter:
 
 A rate distribution can remain stable even when instantaneous complex channel coefficients fluctuate. In that case, optimize a time-averaged performance objective with direct probes; do not force stale measurements into a static coherent path model. If even local comparison rounds are too slow for the environment, select an orientation with good average or conservative performance across recent conditions rather than chasing instantaneous maxima.
 
-### 12.3 Paired probing, acceptance, and rollback
+### 3.1.3 Paired probing, acceptance, and rollback
 
 Sequential measurements confound time and orientation. To compare incumbent $q_0$ with candidate $q_c$, use a bracketed probe when the movement budget permits:
 
@@ -1096,7 +1096,7 @@ function PAIRED_COMPARE(q0, qc, context, comparison_budget):
     return NO_CONFIRMED_IMPROVEMENT
 ```
 
-### 12.4 Account for search costs over wall-clock time
+### 3.1.4 Account for search costs over wall-clock time
 
 The objective used to rank settled orientations is not the entire system-level outcome. For throughput, evaluate
 
@@ -1116,9 +1116,9 @@ $$
 
 where $H$ is the anticipated useful holding time after the search, $\Delta R$ is the expected rate improvement, and $C_{\mathrm{search}}$ is the payload loss during search relative to staying at the incumbent. Both sides are measured in bits. The prediction is uncertain, so a first implementation can use maximum search duration, minimum dwell time, and an improvement margin instead. For weighted or nonlinear objectives, accumulate the corresponding utility over equal wall-clock windows and keep its units consistent.
 
-## 13. Scheme A: Fixed-Period Full Rescanning
+## 3.2 Scheme A: Fixed-Period Full Rescanning
 
-### 13.1 Policy and system model
+### 3.2.1 Policy and system model
 
 Let $P_{\mathrm{full}}$ be the fixed start-to-start scanning period, with scheduled start times
 
@@ -1132,7 +1132,7 @@ A common emergency link-recovery policy can be enabled for both schemes. Such an
 
 “Full” means complete coverage of the declared finite scan grid. It does not mean exhaustive coverage of all continuous orientations or guaranteed recovery of the global physical optimum.
 
-### 13.2 1-D and 2-D scanning procedures
+### 3.2.2 1-D and 2-D scanning procedures
 
 **1-D implementation.** Use $\mathcal Q_{\mathrm{scan}}=\{0^\circ,5^\circ,\ldots,180^\circ\}$, giving 37 orientations under the existing actuator model. At each orientation, wait for settling and collect labeled measurements from every required client. Route the scan to avoid unnecessary travel; revisit the incumbent or a reference orientation during the scan to detect temporal drift.
 
@@ -1149,9 +1149,9 @@ $$
 
 Measurement time per orientation must include the required client observations. Computation and data reception may overlap on some hardware; measure actual elapsed time rather than double-counting overlapping activities.
 
-### 13.3 Estimation, selection, and holding
+### 3.2.3 Estimation, selection, and holding
 
-Use MUSIC_FIT or SAGE_FIT from Part II with all applicable rank, coherence, and calibration checks. Recompute client-to-service rates with the current context. Evaluate all operational candidates, retain several separated high-scoring orientations, and verify them using Section 12.3.
+Use MUSIC_FIT or SAGE_FIT from Part II with all applicable rank, coherence, and calibration checks. Recompute client-to-service rates with the current context. Evaluate all operational candidates, retain several separated high-scoring orientations, and verify them using Section 3.1.3.
 
 If coherent model fitting fails but direct performance measurements remain comparable, select using the measured orientation scores and confirm the finalists. If temporal drift invalidates the entire scan, record the failure and retain or recover to a freshly verified feasible orientation; do not claim that the inconsistent scan identified a current optimum.
 
@@ -1163,7 +1163,7 @@ $$
 
 For a useful holding interval, require $P_{\mathrm{full}}$ to exceed the scan duration with additional room for data service. If a scan overruns the next scheduled start, skip missed starts and resume at the next future scheduled time; do not queue back-to-back scans indefinitely. Repeated overruns indicate an unsuitable period or scan grid.
 
-### 13.4 Trade-offs and response delay
+### 3.2.4 Trade-offs and response delay
 
 In a stable environment, this policy repeatedly pays the full scan cost even when the incumbent remains good. In a changing environment, a change immediately after a scan can remain unaddressed for nearly one period before the next scan even starts. If change times are uniformly distributed within a period, the average wait to the next scan start is $P_{\mathrm{full}}/2$; scan and verification time must then be added. This is a scheduling observation, not a guarantee of recovery.
 
@@ -1175,7 +1175,7 @@ $$
 
 A shorter period reduces stale-orientation time but increases interruption. A longer period does the reverse. Tune the period against measured wall-clock performance, not only the best rate observed immediately after a scan.
 
-### 13.5 Pseudocode
+### 3.2.5 Pseudocode
 
 ```text
 Algorithm 7: Fixed-period full rescanning
@@ -1205,9 +1205,9 @@ Input: scan grid, operational grid, estimator, fixed period P_full,
 Output: orientation history and wall-clock performance log
 ```
 
-## 14. Scheme B: Event-Triggered Local Search with Low-Frequency Global Exploration
+## 3.3 Scheme B: Event-Triggered Local Search with Low-Frequency Global Exploration
 
-### 14.1 Controller state and operating modes
+### 3.3.1 Controller state and operating modes
 
 Maintain the incumbent $q_c$, a stable performance baseline, a recent measurement buffer, current service context, and a small archive of promising orientations. Each archive entry contains its measurement timestamp, context, uncertainty, and any validated model information. Old scores guide probe order; they do not certify current performance.
 
@@ -1232,7 +1232,7 @@ flowchart TD
 
 This combines local probing with change monitoring and continued exploration. Pattern polling supplies the local-search idea; change-detection research motivates separating stable operation from adaptation. The controller is not a direct implementation of a bandit theorem, and its mechanical delays, drifting contexts, and service constraints require their own validation. See [Cao et al., Nearly Optimal Adaptive Procedure with Change Detection for Piecewise-Stationary Bandit](https://proceedings.mlr.press/v89/cao19a.html).
 
-### 14.2 Detect sustained degradation without chasing ordinary fluctuations
+### 3.3.2 Detect sustained degradation without chasing ordinary fluctuations
 
 Let $y_\ell$ be a valid monitoring score at the incumbent. For an unchanged comparison context, maintain an exponentially smoothed value
 
@@ -1263,7 +1263,7 @@ Additional event types have distinct handling:
 
 The detector operates on observations obtained while serving traffic, so ordinary monitoring requires no mechanical motion. Missing traffic, changing priorities, and invalid CSI should not be counted as ordinary low-score windows.
 
-### 14.3 Local search in 1-D and 2-D
+### 3.3.3 Local search in 1-D and 2-D
 
 Use direct measurements of the chosen objective for local control. A few nearby probes can reveal a useful move without identifying every propagation path. Rebuilding a complete MUSIC/SAGE model is not required at every step.
 
@@ -1283,7 +1283,7 @@ $$
 
 Wrap pan, respect joint limits, and remove duplicate states. Near the pole, generate neighbors through small changes of the physical antenna-axis direction and map them to reachable actuator states. For an axisymmetric response, a pan perturbation that leaves the axis effectively unchanged is not an informative spatial probe. Retain distinct calibrated states if rotation changes polarization or mounting response even at the same axis direction. On a discrete grid, test diagonal neighbors before declaring a 2-D neighborhood exhausted when budget permits; axial neighbors alone can miss a diagonal improvement.
 
-Evaluate comparisons using Section 12.3. If several candidates pass, choose the strongest verified improvement after considering movement and service constraints. Keep the current orientation as a fallback.
+Evaluate comparisons using Section 3.1.3. If several candidates pass, choose the strongest verified improvement after considering movement and service constraints. Keep the current orientation as a fallback.
 
 After a successful step, recenter the neighborhood and probe again. The next favorable direction can differ from the previous one. After repeated reliable improvement, modestly enlarge the step up to a limit; after a valid unsuccessful poll, reduce it:
 
@@ -1338,7 +1338,7 @@ Input: incumbent q0, geometry, context, initial/min/max steps,
     return q_best with BUDGET_EXHAUSTED status
 ```
 
-### 14.4 Low-frequency global exploration
+### 3.3.4 Low-frequency global exploration
 
 Local tracking alone cannot detect a distant improvement if the incumbent's performance remains unchanged. Therefore maintain a global-check timer independent of the degradation detector.
 
@@ -1374,7 +1374,7 @@ $$
 
 where $\kappa_g>1$. Keep a finite maximum interval to avoid abandoning remote exploration. A periodic sparse check and a periodic full rescan are different operations with different costs.
 
-### 14.5 Escalation to wider search and full model refresh
+### 3.3.5 Escalation to wider search and full model refresh
 
 Use increasingly expensive actions only while a recovery need remains:
 
@@ -1391,7 +1391,7 @@ Put an upper bound on cumulative search time within a rolling operational window
 
 A wider coarse scan followed by local refinement can miss a narrow peak between coarse points. A complete scan of the declared operational grid provides a stronger finite-grid comparison when the environment remains stable, at the cost quantified for Scheme A. Neither strategy gives a continuous-domain guarantee without further assumptions.
 
-### 14.6 Full event-triggered controller pseudocode
+### 3.3.6 Full event-triggered controller pseudocode
 
 ```text
 Algorithm 9: Event-triggered local search with global exploration
@@ -1435,9 +1435,9 @@ Output: orientation history, change events, coverage record, and performance log
 
 The baseline should not be reset on every loop iteration. During stable operation it is updated conservatively; after an accepted orientation/context change or a confirmed new operating regime it is reestablished from fresh comparable data.
 
-## 15. Integration with MUSIC, SAGE, and the Three Service Objectives
+## 3.4 Integration with MUSIC, SAGE, and the Three Service Objectives
 
-### 15.1 Separate fast performance feedback from slower channel reconstruction
+### 3.4.1 Separate fast performance feedback from slower channel reconstruction
 
 The fast control loop compares measured performance at candidate orientations. The slower model loop reconstructs propagation when enough informative measurements are available. This separation applies to both schemes: Scheme A schedules comprehensive updates, while Scheme B requests them when useful or necessary.
 
@@ -1451,7 +1451,7 @@ The fast control loop compares measured performance at candidate orientations. T
 
 A single fixed-orientation CSI vector, or a few nearby probes, generally does not identify all angles and delays of a multipath scene. Warm starts reduce computation; they do not supply missing information. Do not pool stale observations from several global-check epochs into one static synthetic-array covariance or SAGE fit. Reuse them only through a model that explicitly handles time variation, or acquire a new coherent scan.
 
-### 15.2 Objective-specific adaptation rules
+### 3.4.2 Objective-specific adaptation rules
 
 **One source.** Use source SINR or selected goodput as the trigger and comparison metric. A broad dipole maximum may contain many almost-equivalent orientations; hysteresis prevents unnecessary motion within this region. For one ideal path the broadside condition still applies, but a changing multipath channel requires the full measured objective.
 
@@ -1461,9 +1461,9 @@ A single fixed-orientation CSI vector, or a few nearby probes, generally does no
 
 For all three cases, a context change that cannot be evaluated using existing measurements requires fresh evidence. Reusing an old channel model does not automatically make old offered-load, airtime, or contention assumptions valid.
 
-## 16. Comparing Schemes A and B and Selecting Parameters
+## 3.5 Comparing Schemes A and B and Selecting Parameters
 
-### 16.1 Expected strengths and limitations
+### 3.5.1 Expected strengths and limitations
 
 | Aspect                                           | Scheme A: fixed-period full rescanning                        | Scheme B: event-triggered local search and global checks                |
 | ------------------------------------------------ | ------------------------------------------------------------- | ----------------------------------------------------------------------- |
@@ -1480,7 +1480,7 @@ For all three cases, a context change that cannot be evaluated using existing me
 
 Scheme B is a reasonable default hypothesis for slowly varying environments with expensive mechanical scans. Scheme A remains a useful simple baseline and may be competitive when full scans are cheap or changes are large and frequent. The comparison must be resolved experimentally; one method is not universally better.
 
-### 16.2 Parameter selection from measurements
+### 3.5.2 Parameter selection from measurements
 
 Measure motor travel/settling time, the time needed for a stable per-client score, stationary score variation, and the duration over which comparisons remain meaningful before selecting controller constants.
 
@@ -1500,7 +1500,7 @@ Measure motor travel/settling time, the time needed for a stable per-client scor
 
 For an initial comparison, use the existing $5^\circ$ 1-D grid, fixed controller parameters, and a fixed sparse-check interval. Introduce adaptive intervals only after the basic policies are understood. Avoid choosing a universal number of seconds before measuring how long one useful probe takes.
 
-### 16.3 Evaluation scenarios
+### 3.5.3 Evaluation scenarios
 
 Evaluate each scheme in both geometries, with MUSIC and SAGE where their assumptions hold, and with each of the three Part II objectives. Keep the initial orientation/scan, channel or controlled motion trace, offered traffic, service weights, and estimator settings comparable.
 
@@ -1516,7 +1516,7 @@ Include the following changes:
 
 A useful ablation removes the global checks from Scheme B. Another disables its local search. These isolate the contributions of continuing exploration and inexpensive local adjustment.
 
-### 16.4 Metrics and fair comparison
+### 3.5.4 Metrics and fair comparison
 
 Use equal wall-clock experiment durations and report:
 
@@ -1544,9 +1544,9 @@ This expression assumes valid settled-orientation scores at the comparison times
 
 The practical decision is whether additional searching delivers enough sustained service improvement to offset its measurement and movement cost. Scheme A makes that trade through a fixed schedule; Scheme B makes it through detected changes, bounded local probing, and persistent but inexpensive checks of the wider orientation space.
 
-## 17. Scheme C: Learning-Assisted Predictive Adaptation
+## 3.6 Scheme C: Learning-Assisted Predictive Adaptation
 
-### 17.1 Placement and relationship to the existing parts
+### 3.6.1 Placement and relationship to the existing parts
 
 This mode belongs in **Part III**, alongside Schemes A and B. It extends continuous adaptation by using recurring household behavior to anticipate future demand.
 
@@ -1558,7 +1558,7 @@ This mode belongs in **Part III**, alongside Schemes A and B. It extends continu
 
 The resulting division is: **Part I estimates propagation; Part II optimizes orientation for a specified context; Part III updates that decision as the context changes, including predictable changes.** Scheme C uses Part II's optimizer and Scheme B's feedback, verification, global coverage, and recovery. It adds a predictive layer rather than another AoA estimator.
 
-### 17.2 What the system should learn
+### 3.6.2 What the system should learn
 
 The system learns a conditional distribution of device/service activity, spatial state, and traffic demand. It should not learn a rigid rule such as “rotate to the bedroom every day at midnight.”
 
@@ -1582,7 +1582,7 @@ Keep three quantities distinct:
 
 Frequent activity is not automatically high priority. The learning model predicts demand; a policy component supplies the weights. Several phones or services can be active in different rooms simultaneously, and several services can share one client's channel.
 
-### 17.3 Pattern time scale versus channel time scale
+### 3.6.3 Pattern time scale versus channel time scale
 
 A weekly household routine can be useful even though the instantaneous multipath channel differs from last week. Learn recurring **demand contexts and useful candidate regions**, while treating current channel performance as a separate, faster-changing quantity.
 
@@ -1590,9 +1590,9 @@ Historical MUSIC/SAGE estimates can suggest candidate orientations or spatial cl
 
 The practical output of the learner is therefore a forecast with uncertainty and a ranked list of actions: continue holding, validate a likely future candidate, refresh a relevant channel model, or propose a verified orientation change.
 
-## 18. Usage-Pattern Model and Learning Procedure
+## 3.7 Usage-Pattern Model and Learning Procedure
 
-### 18.1 Observation records and latent variables
+### 3.7.1 Observation records and latent variables
 
 Let $e$ index behavioral observation windows. Their duration $W_{\mathrm{beh}}$ can be longer than a packet-level measurement window; choose it from the durations of the sessions and transitions to be predicted. Do not infer strong weekly evidence from many packets recorded during a single evening.
 
@@ -1632,7 +1632,7 @@ Each observation record should include:
 
 For the uplink receiver used in Part II, transmitter queues may not be visible. Delivered traffic is then an imperfect proxy for offered demand. A badly served or disconnected client can appear inactive even while demand exists. Preserve the distinction between known idle, unobserved, and service-limited states; use available session, queue, or controlled-probe evidence. Likewise, a demand-limited throughput measurement is not a measurement of maximum link capacity.
 
-### 18.2 Calendar context and forecasts beyond a daily cycle
+### 3.7.2 Calendar context and forecasts beyond a daily cycle
 
 Let $v_e$ describe the calendar, $o_e$ the currently available observations, and $\mathcal H_e$ the valid history up to window $e$. A practical feature vector can include
 
@@ -1661,7 +1661,7 @@ Start with time-of-day and weekday/weekend structure. Add day-specific, holiday,
 
 Current observations must influence the forecast. For example, an ongoing television session should increase the probability that living-room demand persists beyond its usual ending time. Future device activity is not an input available to the predictor; only its forecast may be used.
 
-### 18.3 Initial learning model: pooled seasonal profiles
+### 3.7.3 Initial learning model: pooled seasonal profiles
 
 A useful first implementation is an interpretable profile model. Group comparable historical windows by context, such as time band and weekday/weekend, then estimate activity probabilities, spatial-state distributions, demand quantiles, and co-occurrence patterns.
 
@@ -1684,7 +1684,7 @@ Recent activity can refine the seasonal forecast through a small conditional mod
 
 The recency scale and amount of pooling are selected on later held-out periods. Keep uncertainty high for contexts that have occurred only rarely. In particular, one observed weekend is weak evidence for a stable weekend routine.
 
-### 18.4 Separate behavioral prediction from orientation-performance prediction
+### 3.7.4 Separate behavioral prediction from orientation-performance prediction
 
 The behavioral learner forecasts who may need service and their likely spatial states. A response model estimates the payload rate $C_i(q,Z_i,\text{network context})$ at a candidate orientation.
 
@@ -1694,7 +1694,7 @@ Do not average last week's complex path coefficients with today's coefficients t
 
 An orientation archive can index several promising states by client/spatial context and policy version. It should contain diverse candidates, including multi-client compromises, rather than one permanently assigned orientation per room. For a dipole, supporting a room does not mean pointing the antenna axis toward that room.
 
-### 18.5 Cold start, changing routines, and selective observations
+### 3.7.5 Cold start, changing routines, and selective observations
 
 During cold start, operate Scheme B and collect contextual observations from its ordinary service and exploration. Enable predictive decisions only for contexts with sufficient support and acceptable forecast calibration. Sparse or novel contexts continue to use live adaptation.
 
@@ -1704,9 +1704,9 @@ Only the outcomes of actually visited orientations are observed. Repeatedly choo
 
 If a contextual-bandit extension is later used to select candidates, include time, activity, incumbent orientation, and relevant network state in the context, and account for action-dependent movement cost. Nonstationary contextual-bandit methods provide a related framework, but their guarantees do not automatically apply to delayed mechanical actions or evolving queues. See [Luo et al., Efficient Contextual Bandits in Non-stationary Worlds](https://proceedings.mlr.press/v75/luo18a.html).
 
-## 19. Predictive Orientation Optimization and System Design
+## 3.8 Predictive Orientation Optimization and System Design
 
-### 19.1 Forecast scenarios and service-rate prediction
+### 3.8.1 Forecast scenarios and service-rate prediction
 
 At decision epoch $e$, generate $S$ plausible joint future scenarios with probabilities $p_s\geq0$, $\sum_s p_s=1$, over $H$ intervals of duration $\Delta t_h$. Scenario $s$ contains activity, demand, device spatial states, applicable policy weights, and plausible network-response conditions. Include an ordinary continuation scenario and plausible deviations when supported by the forecasting model.
 
@@ -1729,7 +1729,7 @@ Airtime shares follow the declared policy, using the scenario's active services.
 
 The demand cap is a rate-level approximation. Where backlog persists across intervals, predict queue evolution and allow service of existing backlog as well as new arrivals. A complete transport-level forecast would also need rate adaptation and traffic feedback; the initial model should be evaluated as an approximation.
 
-### 19.2 Expected utility, movement cost, and confidence
+### 3.8.2 Expected utility, movement cost, and confidence
 
 For weighted goodput or the concave utility already defined in Part II, score
 
@@ -1763,16 +1763,16 @@ where $u_{V,e}$ is an allowance for behavioral and response-model uncertainty an
 
 The initial implementation can score one candidate orientation held over a short horizon and recompute the decision frequently. A later extension can optimize a sequence of orientations and movement times, subject to dwell and search budgets, then execute only the first action and replan from new observations. Avoid issuing an unchangeable day-long schedule.
 
-### 19.3 Proactive movement is different from reacting to an improvement now
+### 3.8.3 Proactive movement is different from reacting to an improvement now
 
-The paired-comparison rule in Section 12.3 accepts an ordinary move when current measured performance improves. Predictive control also considers moves with a future benefit, so it needs a distinct acceptance path.
+The paired-comparison rule in Section 3.1.3 accepts an ordinary move when current measured performance improves. Predictive control also considers moves with a future benefit, so it needs a distinct acceptance path.
 
 For an advance move:
 
 1. Check that the forecast is supported and the candidate response is sufficiently known.
 2. Probe the candidate when useful measurements are available.
 3. Verify the requirements of currently active critical services and any configured bound on current-performance loss.
-4. Require the forecast net-gain gate in Section 19.2 to pass, including interruption.
+4. Require the forecast net-gain gate in Section 3.8.2 to pass, including interruption.
 5. Confirm performance after moving and continue live monitoring.
 
 An advance move may permit a small configured loss in current noncritical utility if expected future benefit justifies it. It must not be represented as a positive current improvement when it is not one. If the implementation does not allow such a temporary loss, use prediction only to prepare candidates or schedule probes until an ordinary acceptance rule passes.
@@ -1781,7 +1781,7 @@ A forecast of future bedroom traffic is not itself a measurement of the future b
 
 Near a predicted transition, first revalidate the relevant candidates. Move when evidence and net value justify the action, rather than automatically at a calendar boundary. If the television remains active unusually late, preserve its actual service requirements and revise the predicted transition.
 
-### 19.4 Functional architecture and control arbitration
+### 3.8.4 Functional architecture and control arbitration
 
 | Component                               | Responsibility                                                                         | Output                                                                  |
 | --------------------------------------- | -------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
@@ -1813,7 +1813,7 @@ One actuator controller arbitrates all requests. Severe current-service failures
 
 The independent global coverage mechanism remains active. A confident but wrong model must not prevent observation of alternatives outside its preferred room or time pattern.
 
-### 19.5 Use in 1-D, 2-D, and the existing estimators
+### 3.8.5 Use in 1-D, 2-D, and the existing estimators
 
 In 1-D, candidate actions are tilts from $\mathcal Q_1$ plus any feasible refined states. In 2-D, they are reachable pan-tilt pairs from $\mathcal Q_2$. The behavioral predictor can be shared across both geometries; the response model, action set, movement cost, and local-neighbor generation change.
 
@@ -1821,7 +1821,7 @@ MUSIC and SAGE continue to estimate propagation from suitable measurements. Sche
 
 For a recurring living-room/bedroom transition, the predictive candidate set can contain the incumbent, several verified living-room candidates, several bedroom-associated candidates, and a multi-room compromise. It can also include underexplored global candidates. The winner depends on present and forecast demand, service weights, rate predictions, and movement cost, rather than on a semantic room name.
 
-### 19.6 Learning and control pseudocode
+### 3.8.6 Learning and control pseudocode
 
 ```text
 Algorithm 10: Update household usage and response models
@@ -1877,9 +1877,9 @@ Input: Scheme B controller, current orientation, learned models,
 Output: proactive and reactive action history with wall-clock service metrics
 ```
 
-## 20. Evaluating Pattern Learning and Introducing It Incrementally
+## 3.9 Evaluating Pattern Learning and Introducing It Incrementally
 
-### 20.1 Recommended implementation sequence
+### 3.9.1 Recommended implementation sequence
 
 Begin with a small, interpretable extension of Scheme B:
 
@@ -1891,7 +1891,7 @@ Begin with a small, interpretable extension of Scheme B:
 
 This sequence distinguishes the value of better probe selection from the additional value and risk of moving before demand actually appears. The system remains usable when patterns are weak or history is sparse.
 
-### 20.2 Comparative experiments
+### 3.9.2 Comparative experiments
 
 Keep Schemes A and B as established baselines, and add:
 
@@ -1908,11 +1908,11 @@ Evaluate regular evenings, late-night transitions, weekday/weekend differences, 
 
 Use chronological training/validation/test periods and rolling forward evaluation. Randomly splitting nearby windows can leak the same session into training and testing and exaggerate predictive quality. Weekly claims need multiple independent weekly occurrences, and later weekends must remain available for evaluation. At each decision, use only information available by that time.
 
-### 20.3 Prediction quality and control quality are separate outcomes
+### 3.9.3 Prediction quality and control quality are separate outcomes
 
 Measure activity-probability calibration, demand forecast error/quantile coverage, spatial-state uncertainty, and transition-time error. These diagnose the learner, but accurate forecasts alone do not establish a better antenna controller.
 
-Also report the wall-clock metrics from Section 16.4, plus:
+Also report the wall-clock metrics from Section 3.5.4, plus:
 
 - Time from a real service transition to acceptable performance.
 - Useful anticipation lead time and the frequency of unnecessary advance moves.
@@ -1924,7 +1924,7 @@ Also report the wall-clock metrics from Section 16.4, plus:
 
 Compare methods at matched movement or exploration budgets as well as equal elapsed time. Include cold-start operation and forecast failures in the reported result.
 
-### 20.4 Limits of learning from historical control logs
+### 3.9.4 Limits of learning from historical control logs
 
 A historical log contains the consequences of the actions taken by its logging policy. It does not reveal the outcomes of every other orientation. If randomized exploration is used, preserve its actual selection probabilities and context.
 
